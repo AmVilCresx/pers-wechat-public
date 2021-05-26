@@ -18,4 +18,6 @@ public interface MediaInfoMapper {
     int insertSelective(MediaInfo record);
 
     int delteByMediaId(@Param("mediaId")String mediaId);
+
+    MediaInfo selectByMediaId(@Param("mediaId")String mediaId);
 }

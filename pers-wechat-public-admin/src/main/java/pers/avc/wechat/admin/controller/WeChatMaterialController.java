@@ -29,4 +29,14 @@ public class WeChatMaterialController {
                                        String introduction) {
         return weChatMaterialManager.uploadMedia(multipartFile, title, mediaType, introduction);
     }
+
+    /**
+     * 根据媒体id删除
+     * @param mediaId 媒体Id
+     * @return ResultResp
+     */
+    @DeleteMapping("/delete/{media_id}")
+    public ResultResp<?> delMaterial(@PathVariable("media_id") String mediaId) {
+        return weChatMaterialManager.deleteByMediaId(mediaId);
+    }
 }

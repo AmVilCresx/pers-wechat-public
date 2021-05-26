@@ -1,6 +1,6 @@
 wechat:
-  app-id: wxappId
-  app-secret: wxSecret
+  app-id: wxe8c4a251ff810e54
+  app-secret: ab746965436f7152ba5577ecf8f92c28
 server:
   port: 8091
 spring:

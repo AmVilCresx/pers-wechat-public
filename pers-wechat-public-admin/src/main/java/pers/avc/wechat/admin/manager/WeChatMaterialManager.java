@@ -17,6 +17,7 @@ import pers.avc.wechat.admin.dto.ResultResp;
 import pers.avc.wechat.admin.mapper.MediaInfoMapper;
 import pers.avc.wechat.admin.model.MediaInfo;
 import pers.avc.wechat.admin.service.AccessTokenService;
+import pers.avc.wechat.common.constants.CommonConstants;
 import pers.avc.wechat.common.constants.WeChatURLConstants;
 import pers.avc.wechat.common.util.MultipartFileToFileUtil;
 
@@ -54,7 +55,7 @@ public class WeChatMaterialManager {
         }
 
         File targetFile = MultipartFileToFileUtil.multipartFileToFile(multipartFile);
-        MediaInfo mediaInfo = null;
+        MediaInfo mediaInfo;
         try{
             WritableResource resource = new FileSystemResource(targetFile);
             data.add("media", resource);
@@ -89,5 +90,26 @@ public class WeChatMaterialManager {
             return mediaInfo;
         }
         return null;
+    }
+
+    public ResultResp<?> deleteByMediaId(String mediaId) {
+        MediaInfo mediaInfo = mediaInfoMapper.selectByMediaId(mediaId);
+        if (Objects.isNull(mediaInfo)) {
+            return ResultResp.error("该素材不存在");
+        }
+
+        String delUrl = String.format(WeChatURLConstants.DELTE_MATERIAL, accessTokenService.getAccessToken());
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("media_id", mediaId);
+        String delRespStr = restTemplate.postForObject(delUrl, jsonBody, String.class);
+        log.info("删除素材返回结果:{}", delRespStr);
+
+        JSONObject respObj = JSONObject.parseObject(delRespStr);
+        Integer errCode = respObj.getInteger(CommonConstants.WECHAT_RESP_ERRCODE);
+        if (Objects.nonNull(errCode) && errCode == 0) {
+            log.info("微信返回删除结果:成功!");
+            mediaInfoMapper.delteByMediaId(mediaId);
+        }
+        return ResultResp.ok("ok");
     }
 }

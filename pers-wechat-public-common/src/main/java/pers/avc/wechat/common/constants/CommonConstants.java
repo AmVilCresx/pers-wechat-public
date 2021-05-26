@@ -5,6 +5,8 @@ package pers.avc.wechat.common.constants;
  */
 public interface CommonConstants {
 
+    String WECHAT_RESP_ERRCODE = "errcode";
+
     String RESPONSE_CODE_FIELD = "code";
 
     String NEW_LINE = "\n";

@@ -49,4 +49,8 @@ public class ResultResp<T> {
     public static <C> ResultResp<C> ok(C c) {
         return new ResultResp<>(WeChatAdminErrorCode.SUCCESS, "success", c);
     }
+
+    public static ResultResp<?> error(String msg) {
+        return new ResultResp<>(WeChatAdminErrorCode.FAILED, msg, null);
+    }
 }

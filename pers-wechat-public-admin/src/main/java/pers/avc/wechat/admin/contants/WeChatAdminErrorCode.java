@@ -7,5 +7,7 @@ public interface WeChatAdminErrorCode {
 
     int SUCCESS = 0;
 
+    int FAILED = -1;
+
     int PARAM_ERROR = 1;
 }

@@ -56,4 +56,8 @@
     <delete id="delteByMediaId">
         delete from t_media_info where media_id = #{mediaId}
     </delete>
+
+    <select id="selectByMediaId" resultMap="mediaInfoMap">
+         select * from t_media_info where media_id = #{mediaId}
+    </select>
 </mapper>

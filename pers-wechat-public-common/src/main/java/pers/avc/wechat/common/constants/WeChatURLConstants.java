@@ -30,4 +30,9 @@ public interface WeChatURLConstants {
      * 新增永久素材
      */
     String UPLOAD_FOREVER_MATERIAL = "https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=%s&type=%s";
+
+    /**
+     * 删除素材
+     */
+    String DELTE_MATERIAL = "https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=%s";
 }
