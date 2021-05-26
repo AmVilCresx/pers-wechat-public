@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pers.avc.wechat.admin.mapper.MediaInfoMapper">
+
+    <resultMap id="mediaInfoMap" type="pers.avc.wechat.admin.model.MediaInfo">
+        <result column="id" property="id"/>
+        <result column="type" property="type" typeHandler="pers.avc.wechat.admin.mybatis.typehandler.MediaTypeHandler"/>
+        <result column="media_id" property="mediaId"/>
+        <result column="url" property="url"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="selectByType" resultMap="mediaInfoMap">
+        select * from t_media_info where type = #{type, typeHandler=pers.avc.wechat.admin.mybatis.typehandler.MediaTypeHandler}
+   </select>
+
+    <insert id="insertSelective" parameterType="pers.avc.wechat.admin.model.MediaInfo">
+        insert into t_media_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="mediaId != null">
+                media_id,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="type != null">
+                #{type, typeHandler=pers.avc.wechat.admin.mybatis.typehandler.MediaTypeHandler},
+            </if>
+            <if test="mediaId != null">
+                #{mediaId},
+            </if>
+            <if test="url != null">
+                #{url},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delteByMediaId">
+        delete from t_media_info where media_id = #{mediaId}
+    </delete>
+</mapper>

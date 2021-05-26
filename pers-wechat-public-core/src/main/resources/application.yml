@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+        prefix: ${spring.application.name}
+        encode: UTF-8
+        namespace: cc1a88d8-5355-4850-a109-b1afda720957 # 自建的命名空间id（非名称）
+  application:
+    name: wechat-core

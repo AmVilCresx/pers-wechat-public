@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        serverAddr: 192.168.195.1:8848
+        # prefix: ${spring.application.name}
+        encode: UTF-8
+  application:
+    name: wechat-admin

@@ -1,0 +1,31 @@
+wechat:
+  app-id: wxappId
+  app-secret: wxSecret
+server:
+  port: 8091
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/common_daily?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: authJzao666
+  #Redis相关配置
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 0
+        max-wait: -1
+        max-active: 8
+        min-idle: 0
+    timeout: 3000
+  servlet:
+    multipart:
+      max-file-size: 100MB
+
+mybatis:
+  type-aliases-package: pers.avc.wechat.admin.model
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: pers.avc.wechat.admin.mybatis.typehandler

@@ -1,0 +1,21 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/common_daily?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: authJzao666
+mybatis:
+  type-aliases-package: pers.avc.wechat.core.model
+  mapper-locations: classpath:mapper/*.xml
+
+wechat:
+  message:
+    token: wechatxxxxxken
+
+# 聚合API
+juhe:
+  weather:
+    key: b9f367f25dcxxxxxxx029ac6e725
