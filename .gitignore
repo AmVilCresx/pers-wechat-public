@@ -6,3 +6,4 @@ gen
 */target/*
 /.idea/
 /.idea/workspace.xml
+/pers-wechat-public-admin/*.iml

@@ -74,7 +74,7 @@ public class WeChatMaterialManager {
 
     private MediaInfo insertRecordWhenSuccess(String mediaType, String respStr) {
         JSONObject respObject = JSONObject.parseObject(respStr);
-        Integer errCode = respObject.getInteger("errcode");
+        Integer errCode = respObject.getInteger(CommonConstants.WECHAT_RESP_ERRCODE);
         // 上传成功， 不会返回错误码字段
         if (Objects.isNull(errCode)) {
             MediaInfo mediaInfo = new MediaInfo();
